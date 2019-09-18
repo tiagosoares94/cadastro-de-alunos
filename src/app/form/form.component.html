@@ -1,19 +1,22 @@
 <div class="container">
-  <form class="jumbotron">
+  <form (submit)="salvar()" #myForm="ngForm" class="jumbotron">
     <div class="form-group">
       <label for="name">Name:</label>
-      <input type="text" class="form-control" id="name" required>
+      <input [(ngModel)]="aluno.nome" #limpar #nomeInput="ngModel" type="text" class="form-control" id="name" name="nome_aluno" required>
+      <div [hidden]="nomeInput.valid" class="alert alert-danger">
+        Nome é obrigatório
+      </div>
     </div>
 
     <div class="form-group">
       <p class="mb-1">Sexo:</p>
-      <input class="mr-1" type="radio" id="Masculino" name="Masculino" value="Masculino">
+      <input [(ngModel)]=aluno.sexo class="mr-1" type="radio" id="Masculino" name="Masculino" value="Masculino">
       <label class="mr-3" for="Masculino">Masculino</label>
-      <input class="mr-1" type="radio" id="Feminino" name="Feminino" value="Feminino">
+      <input [(ngModel)]=aluno.sexo class="mr-1" type="radio" id="Feminino" name="Feminino" value="Feminino">
       <label for="Feminino">Feminino</label>
     </div>
 
-    <button type="submit" class="mr-2 btn btn-success">Salvar</button>
-    <button type="submit" class="btn btn-light">Limpar</button>
+    <button type="submit" [disabled]="!myForm.valid" type="submit" class="mr-2 btn btn-success">Salvar</button>
+    <button (click)="myForm.reset()" type="submit" class="btn btn-light">Limpar</button>
   </form>
 </div>

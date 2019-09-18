@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Aluno } from './aluno';
+
 @Injectable()
 export class ServicoService {
   public lista: Aluno[] = [];
+
   constructor() { }
+
   add(aluno: Aluno): void {
     this.lista.push(aluno);
   }

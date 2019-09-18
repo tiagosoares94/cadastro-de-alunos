@@ -1,0 +1,21 @@
+<div class="container">
+	<div *ngIf="servico.lista.length > 0">
+		<table class="table table-striped">
+			<thead class="text-center">
+				<tr>
+					<th class="text-left" scope="col">Nome</th>
+					<th class="text-left" scope="col">Sexo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let c of servico.lista">
+					<td (contextmenu)="excluir(c)">{{c.nome}}</td>
+					<td (contextmenu)="excluir(c)">{{c.sexo}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="text-center" *ngIf="servico.lista.length === 0">
+		<h6 class="text-danger">Nenhuma Pessoa Cadastrada</h6>
+	</div>
+</div>
